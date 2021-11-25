@@ -3,12 +3,36 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using static TurkEParaDisEntegrasyonSistemi.Models.Integration;
 
 namespace TurkEParaDisEntegrasyonSistemi.Controllers
 {
     public class HomeController : Controller
     {
+        //?Dekont_ID=112345555&Tarih=03.05.2020&Aciklama=test&Tutar=10&Musteri_Data=12341212121&Banka=ZiraatBank
+        public ActionResult AccountMovement()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AccountMovement(PostIntegration model)
+        {
+            PostIntegration postIntegration = new PostIntegration()
+            {
+                Dekont_ID = model.Dekont_ID,
+                Tarih = model.Tarih,
+                Aciklama = model.Aciklama,
+                Tutar = model.Tutar,
+                Musteri_Data = model.Musteri_Data,
+                Banka = model.Banka
+            };
+            var json = new JavaScriptSerializer().Serialize(postIntegration);
+
+            return View(json);
+        }
+
         public TURKTokenResult GetToken()
         {
             TURKTokenResult turkTokenResult = new TURKTokenResult();
@@ -51,7 +75,6 @@ namespace TurkEParaDisEntegrasyonSistemi.Controllers
         {
             TURKHareketResult turkHareketResult = new TURKHareketResult();
             Hareket hareket = new Hareket();
-
             var getToken = GetToken();
 
             try

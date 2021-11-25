@@ -36,5 +36,29 @@
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+
+        var Dekont_ID = "112345555";
+        var Tarih = "03.05.2020";
+        var Aciklama = "test";
+        var Tutar = "10";
+        var Musteri_Data = "12341212121";
+        var Banka = "ZiraatBank";
+
+        $(document).on("click", ".btnSend", function () {
+            $.ajax({
+                type: "POST",
+                url: "/home/AccountMovement",
+                data: ({ "Dekont_ID": Dekont_ID, "Tarih": Tarih, "Aciklama": Aciklama, "Tutar": Tutar, "Musteri_Data": Musteri_Data, "Banka": Banka }),
+                dataType: "json",
+                success: function (response) {
+                    console.log(response.json);
+                }
+            });
+        });
+
+    </script>
+
 </body>
 </html>

@@ -12,7 +12,7 @@ namespace TurkEParaDisEntegrasyonSistemi
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "BankList", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "AccountMovement", id = UrlParameter.Optional }
             );
         }
     }

@@ -4,6 +4,16 @@ namespace TurkEParaDisEntegrasyonSistemi.Models
 {
     public static class Integration
     {
+        public class PostIntegration
+        {
+            public string Dekont_ID { get; set; }
+            public string Tarih { get; set; }
+            public string Aciklama { get; set; }
+            public string Tutar { get; set; }
+            public string Musteri_Data { get; set; }
+            public string Banka { get; set; }
+        }
+
         public class TURKToken
         {
             public string T { get; set; }
